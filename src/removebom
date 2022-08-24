@@ -1,0 +1,14 @@
+#!/bin/bash
+ARGUMENT=$1;
+if [[ -f $ARGUMENT ]]; then
+    # GET HERE IF FILE ARGUMENT IS VALID:
+    # USE sed MAGIC TO DO THE WORK:
+    sed -E -i.bak '1s/^\xef\xbb\xbf//' $ARGUMENT
+else
+    echo "REMOVEBOM is (c) 2022 by Edward H. Trager."
+    echo ""
+    echo "removebom removes a Unicode byte order mark to the beginning of a file."
+    echo ""
+    echo "Please pass a valid file name as the command line argument."
+    exit 1
+fi
