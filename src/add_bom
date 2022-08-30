@@ -8,12 +8,16 @@ if [[ -f $ARGUMENT ]]; then
     #sed -i .bak '1s/^/\xef\xbb\xbf/' $ARGUMENT
     # The following is functionally equivalent to the above
     # but contains the UTF-8 U+FEFF BOM character directly:
-    sed -E -i.bak '1s/^/﻿/' $ARGUMENT
+    sed -E -i.original '1s/^/﻿/' $ARGUMENT
 else
-    echo "ADDBOM is (c) 2019, 2022 by Edward H. Trager."
+    echo "ADD_BOM is (c) 2019, 2022 by Edward H. Trager."
     echo ""
-    echo "addbom adds a Unicode byte order mark to the beginning of a file."
+    echo "add_bom adds a Unicode byte order mark BOM to the beginning of a file."
     echo "Microsoft Excel very curiously requires this in order to treat a file as UTF-8."
+    echo ""
+    echo "The contents of the original file are preserved in a file with .original added"
+    echo "to the end of the file name. The original file name will now contain a BOM"
+    echo "at the beginning of the file."
     echo ""
     echo "Please pass a valid file name as the command line argument."
     exit 1
